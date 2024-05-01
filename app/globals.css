@@ -2,32 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.customUnderline {
+	display: inline-block;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.customUnderline::after {
+	content: '';
+	display: block;
+	/* width: 0; */
+	height: 2px;
+	background: #524f4f;
+	/* transition: width 0.3s; */
+	animation-name: CustomUnderline;
+	animation-duration: 0.5s;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes CustomUnderline {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 100%;
+	}
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.toolTipAnimations {
+	animation-name: toolTipAnimations;
+	animation-duration: 2s;
+	/* animation-iteration-count: infinite; */
+}
+
+@keyframes toolTipAnimations {
+	0% {
+		top: -50px;
+
+		/* opacity: 0; */
+	}
+	100% {
+		top: 10px;
+	}
 }
